@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bastiaan's Page</title>
+    <style>
+        body {
+            background-color: #FCE300;
+            color: #bd1864;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1, h2, h3, p {
+            margin: 20px 0;
+        }
+        p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function redirectToPage(select) {
+            if (select.value) {
+                window.location.href = select.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Howdy Howdy Howdy!</h1>
+    <h2>Name’s Bastiaan!</h2>
+    <h3>Pleasure to see ya.</h3>
+    <label for="dropdown">Choose an option:</label>
+    <select id="dropdown" onchange="redirectToPage(this)">
+        <option selected value="">--Select--</option>
+        <option value="en/enmvdk.html">Mario vs Donkey Kong</option>
+    </select>
+</body>
+</html>

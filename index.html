@@ -3,30 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bastiaan's Page</title>
+    <title>Language Selection</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
             background-color: #FCE300;
-            color: #bd1864;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            color: #bd1864;
         }
-        h1, h2, h3, p {
-            margin: 20px 0;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto;
+        .flags {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .flag {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .flag:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <h1>Howdy Howdy Howdy!</h1>
-    <h2>Name’s Bastiaan!</h2>
-    <h3>Pleasure to see ya.</h3>
-    <p>This is gonna be my page where I try to recreate different CSS setups to get better at front-end, for now it’ll be blank for I have created none yet.</p>
-    <h3>Hope to see more of ya in the future!</h3>
+    <div class="container">
+        <div class="flags">
+            <div>
+                <img src="https://flagsapi.com/NL/flat/64.png" alt="Dutch" class="flag" onclick="redirectTo('Dutch.html')">
+                <h1>Dutch</h1>
+            </div>
+            <div>
+                <img src="https://flagsapi.com/US/flat/64.png" alt="English" class="flag" onclick="redirectTo('English.html')">
+                <h1>English</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
 </body>
 </html>
