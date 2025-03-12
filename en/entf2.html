@@ -15,45 +15,47 @@
         }
         body {
             overflow: hidden;
-        }
-        .background {
-            background-image: url('../images/tf2_2fort.png');
-            filter: grayscale(100%);
             position: absolute; 
+            left: 0%; 
+            top: 0%; 
+            width: 100%; 
+            height: 100%;
+        }
+        footer {
+            position: absolute; 
+            left: 0%; 
+            top: 0%; 
+            width: 100%; 
+            height: 100%;
+            z-index: 1;
+        }
+        .background-overlay {
+            background: red;
+            position: absolute;
             left: 0%; 
             top: 0%; 
             width: 100%; 
             height: 100%;
             z-index: -1;
         }
+        .background {
+            background-image: url('../images/tf2_2fort.png');
+            filter: grayscale(90%);
+            position: absolute; 
+            left: -3%; 
+            top: -8%; 
+            width: 150vw; 
+            height: 100vh;
+            z-index: -2;
+        }
         .gradient {
             background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
             filter: grayscale(100%);
             position: absolute; 
-            left: 0%; 
+            left: -30%; 
             top: 0%; 
-            width: 100%; 
-            height: 100%;
-        }
-        .top-gradient {
-            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-        }
-        .top-bar {
-            margin: -8px;
-            display: block;
-            position: flex; 
-            width: 100vw;
-            background: rgb(44,39,36);
-            background: linear-gradient(0deg, rgba(44,39,36,1) 0%, rgba(43,38,38,1) 50%, rgba(44,39,36,1) 100%);
-            min-height: 9vh;
-            max-height: 9vh;
-            z-index: 2;
-            overflow: hidden;
-        }
-        .top-bar img {
-            flex-shrink: 0;
-            min-width: 100%;
-            min-height: 100%;
+            width: 150%; 
+            height: 150%;
         }
         .info-icon {
             z-index: 999;
@@ -116,132 +118,71 @@
             max-height: 100%;
             border-radius: 8px;
         }
-        
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            height: 60px;
-            background: linear-gradient(to bottom, #3a2f2f, #504545, #3a2f2f, rgba(255, 255, 255, 0.1) 99%);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            background-blend-mode: overlay;
+        @font-face {
+            font-family: 'tf2font';
+            src: url('../fonts/tf2build.ttf') format('truetype');
         }
-
-        .navbar::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-        }
-
-        .left-section, .right-section {
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .small-square {
-            width: 30px;
-            height: 30px;
-            background-color: #d9c8b3;
-            transition: background 0.3s;
-        }
-
-        .small-square:hover {
-            background-color: white;
-        }
-
-        .image-container {
-            display: flex;
-            gap: 5px;
-            margin-left: 5px;
-        }
-
-        .image-container img {
-            width: 30px;
-            height: 30px;
-            border-bottom: 2px solid silver;
-            border-left: 2px solid silver;
-            border-right: 2px solid silver;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .red-button {
-            width: 40px;
-            height: 40px;
-            background-color: darkred;
-            transition: background 0.3s;
-        }
-
-        .red-button:hover {
-            background-color: red;
-        }
-
-        .green-bar {
-            height: 40px;
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: darkgreen;
-            color: white;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .green-bar:hover {
-            background-color: limegreen;
+        .tf2-font {
+            font-family: 'tf2font', sans-serif;
         }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span id="closeButton" class="close-btn">&times;</span>
+            <img src="../images/references/tf2refimage.png" alt="Image" class="modal-image">
+        </div>
+    </div>
+    <nav class="flex justify-between items-center bg-[#2c221b]  w-full border-b-4 border-[#3d3328] h-16 drop-shadow-lg">
+        <div class="flex items-center space-x-0.5">
+            <button class="bg-[#776b5f] hover:bg-[#ebe3cb] text-white px-8 py-[2%] flex items-center">
+                <img src="../svgs/bubbles.svg" alt="icon" class="w-12 h-12">
+            </button>
+            <div class="flex items-center space-x-0.5">
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] relative rounded-sm">
+                    <img class="border-b-2 border-[#fce300] hover:border-[#fff382]" src="../images/pfp.png"/>
+                </div>
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] border border-[#736d67] rounded-sm"></div>
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] border border-[#736d67] rounded-sm"></div>
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] border border-[#736d67] rounded-sm"></div>
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] border border-[#736d67] rounded-sm"></div>
+                <div class="w-14 h-14 bg-[#1a1a1a] hover:bg-[#3b3b3b] border border-[#736d67] rounded-sm"></div>
+            </div>
+        </div>
+
+
+        <div class="flex items-center">
+            <button class="bg-[#4a6b1c] hover:bg-[#75a92c] text-white px-6 py-[2.7%]  flex items-center space-x-2">
+                <img src="../svgs/icons8-team-fortress-2.svg" alt="icon" class="w-8 h-8">
+                <span class="tf2-font text-[28px]">FIND A GAME</span>
+            </button>
+
+            <button class="bg-[#622220] hover:bg-[#ae3d39] text-white px-3 py-[2.7%] text-[28px]">
+                &#x23FB;
+            </button>
+        </div>
+    </nav>
+    <footer class="sticky top-[100%] h-32 border-t-4 border-[#6f635d] bg-gradient-to-t from-[#312e29] to-[#39342f]">
+
+    </footer>
+    <div class="background-overlay">
+        <div class="gradient"/>
+    </div>
     <div class="background">
-        <div class="gradient"></div>
-    </div>
-    <div class="navbar">
-        <div class="left-section">
-            <div class="small-square"></div>
-            <div class="image-container">
-                <img src="pfp.png">
-                <img src="blank.png">
-                <img src="blank.png">
-                <img src="blank.png">
-                <img src="blank.png">
-                <img src="blank.png">
-            </div>
-        </div>
-        <div class="right-section">
-            <div class="green-bar">Find a game</div>
-            <div class="red-button"></div>
-        </div>
-    </div>
-    <div>
-        <div id="info-icon" class="info-icon">i</div>
-        <div id="imageModal" class="modal">
-            <div class="modal-content">
-                <span id="closeButton" class="close-btn">&times;</span>
-                <img src="../images/references/tf2refimage.png" alt="Image" class="modal-image">
-            </div>
-        </div>
+        <div class="gradient"/>
     </div>
 </body>
 </html>
 <script>
-    const infoIcon = document.getElementById('info-icon');
     const modal = document.getElementById('imageModal');
     const closeButton = document.getElementById('closeButton');
 
-    infoIcon.addEventListener('click', function() {
-        modal.style.display = 'flex';
+    window.addEventListener('keydown', function(event) {
+        if (event.key.toLowerCase() === 'i') {
+            modal.style.display = 'flex';
+        }
     });
 
     closeButton.addEventListener('click', function() {

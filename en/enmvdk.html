@@ -226,7 +226,6 @@
                 <p class="underlineTitle">Inspired by Hyperplexed</p>
             </div>
         </div>
-        <div id="info-icon" class="info-icon">i</div>
         <div id="imageModal" class="modal">
             <div class="modal-content">
                 <span id="closeButton" class="close-btn">&times;</span>
@@ -241,12 +240,13 @@
 </body>
 </html>
 <script>
-    const infoIcon = document.getElementById('info-icon');
     const modal = document.getElementById('imageModal');
     const closeButton = document.getElementById('closeButton');
 
-    infoIcon.addEventListener('click', function() {
-        modal.style.display = 'flex';
+    window.addEventListener('keydown', function(event) {
+        if (event.key.toLowerCase() === 'i') {
+            modal.style.display = 'flex';
+        }
     });
 
     closeButton.addEventListener('click', function() {
